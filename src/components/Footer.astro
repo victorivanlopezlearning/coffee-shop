@@ -1,0 +1,25 @@
+---
+import FooterCard from "./FooterCard.astro";
+---
+
+<footer class="bg-coffee-900 text-white py-10 m-0">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-0 my-10">
+      <FooterCard title="Ubicación">
+        <p>Coffee Street 39</p>
+        <p>Guadalajara, Jalisco</p>
+      </FooterCard>
+      <FooterCard title="Reservación">
+        <p>Tel: (33) 1234-5678</p>
+        <a class="hover:underline" href="tel:+33312345678">Llamar</a>
+      </FooterCard>
+      <FooterCard title="Horario">
+        <p>Lunes a Viernes: 8:00 AM - 8:00 PM</p>
+        <p>Sábado y Domingo: 9:00 AM - 6:00 PM</p>
+      </FooterCard>
+    </div>
+    <p class="text-center pt-10 text-sm">
+      &copy; {new Date().getFullYear()} Coffee Shop. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
