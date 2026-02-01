@@ -14,4 +14,17 @@
   --color-coffee-800: #7c3f24;
   --color-coffee-900: #5e311e;
   --color-coffee-950: #3a1a0e;
+
+  --coffee-icon-size: 6rem;
+}
+
+@utility coffee-icon {
+  display: block;
+  margin-inline: auto;
+  width: var(--coffee-icon-size);
+  height: var(--coffee-icon-size);
+  background-image: url("../assets/coffee.svg");
+  background-size: var(--coffee-icon-size);
+  background-position: center;
+  background-repeat: no-repeat;
 }
