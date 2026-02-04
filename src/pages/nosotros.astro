@@ -1,0 +1,43 @@
+---
+import { Picture } from "astro:assets";
+import Layout from "@/layouts/Layout.astro";
+import { baseWPSchema } from "@/types";
+
+const urlWP =
+  import.meta.env.WP_URL ||
+  "http://coffee-shop.local/wp-json/wp/v2/pages?slug=nosotros";
+const response = await fetch(urlWP);
+const json = await response.json();
+const data = baseWPSchema.parse(json[0]);
+
+const { title, content, acf, featured_images } = data;
+---
+
+<Layout
+  metaTitle={title.rendered}
+  metaDescription="Conoce más sobre Coffee Shop, nuestra historia y pasión por el café."
+  mainHeading={acf.tagline}
+  bgImage={featured_images.full.url}
+>
+  <section class="relative bg-white p-15 lg:p-20 max-w-7xl mx-auto lg:-mt-20">
+    <h2
+      class="text-coffee-900 text-4xl font-black text-center uppercase pb-10 after:coffee-icon"
+    >
+      {title.rendered}
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <Picture
+        class="border-[2rem] border-white shadow-lg -rotate-6"
+        src={featured_images.medium_large.url}
+        alt={`Imagen de ${title.rendered}`}
+        width={featured_images.medium_large.width}
+        height={featured_images.medium_large.height}
+        formats={['avif', 'webp']}
+      />
+      <div>
+        <div class="text-lg space-y-3" set:html={content.rendered} />
+      </div>
+    </div>
+  </section>
+</Layout>
